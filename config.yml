@@ -1,2 +1,2 @@
-SERVER_ADDRESS: 'http://0.0.0.0:9097/model/parse'
+SERVER_ADDRESS: 'http://148.251.195.218:9097/model/parse'
 AGE_RANGE: [40,80]
