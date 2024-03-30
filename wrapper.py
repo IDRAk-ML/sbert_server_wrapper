@@ -1,8 +1,6 @@
 from utils.utils import get_classification,return_class_number
 
-RASA_SERVER_ADDRESS = 'http://113.203.209.145:9097/model/parse'
-AGE_RANGE = (40,80)
-text = 'I am 45'
+
 
 
 class OldBotStyleWrapper:
@@ -18,6 +16,9 @@ class OldBotStyleWrapper:
 
 
 if __name__ == '__main__':
+    RASA_SERVER_ADDRESS = 'http://113.203.209.145:9097/model/parse'
+    AGE_RANGE = (40,80)
+    text = 'I am 45'
     old_bot_rasa = OldBotStyleWrapper(rasa_server_address=RASA_SERVER_ADDRESS,
                                       age_range=AGE_RANGE)
     ai_number = old_bot_rasa.predict('hello')
