@@ -2,3 +2,4 @@ nltk
 word2number
 fastapi
 uvicorn
+setfit

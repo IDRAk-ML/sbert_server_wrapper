@@ -1,11 +1,11 @@
 import requests
 
 # URL of the FastAPI server
-url = "http://148.251.195.218:9096/process-text/"
+url = "http://0.0.0.0:9096/process-text/"
 
 # Data to be sent to the server
 data = {
-    "text": "Yes, I am 30 years old."  # Replace this with the actual text you want to send
+    "text": "i am having fever  "  # Replace this with the actual text you want to send
 }
 
 # Sending a POST request to the FastAPI server

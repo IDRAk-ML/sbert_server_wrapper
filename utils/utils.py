@@ -1,10 +1,11 @@
 #StateSpace Util functionsimport random
 import requests
 from ai_resources.KeywordChecker import KeywordModal
+from ai_resources.SBertClassifier import SBertClassifier
 from utils.enums import classes_dict
 from word2number import w2n
 keyword_model = KeywordModal()
-
+sbert_classifier = SBertClassifier()
 import yaml
 
 def read_yaml_file(file_path):
@@ -56,17 +57,22 @@ def parse_rasa_resp(text,rasa_server_url):
 
 def get_classification(transcript,verbose=False,modules = {},server_address = '',
                        age_range=(40,80)):
-    result = parse_rasa_resp(transcript,rasa_server_url=server_address)
-    state_name = modules.get('current_state',None)
     
+    # ------------------- getting the entity from rasa -------------------------------
+    result = parse_rasa_resp(transcript,rasa_server_url=server_address) #getting entity
+    
+    # -------------------- define the year, to get the age count ---------------------
     current_year = 2024
     age_count = 0
     age_mod_flag = False
     if result['entity'] != 'None' or result['entity'] != '':
+            # --------------- if year of birth customer ---------------------------
             if result['entity_name'] == 'yob':
                 try:
+                    #-------------- for whisper ---------------
                     age_count = current_year - int(result['entity'])
                 except:
+                    #-------------- for kaldi style text entity -------------------
                     age_count = current_year - int(w2n.word_to_num(result['entity']))
                     
                 age_mod_flag = True
@@ -78,15 +84,17 @@ def get_classification(transcript,verbose=False,modules = {},server_address = ''
                 age_mod_flag = True
             else:
                 age_count = 0
-
+    # ----------------- if age in age range return postive
     if (age_count >=age_range[0] and age_count<=age_range[1]) and (age_mod_flag):
         result['final_intent'] = 'affirmation'
+    # ------------------ return negative
     elif (age_count < age_range[0] or  age_count>age_range[1]) and (age_mod_flag):
         result['final_intent'] = 'decline'
+    # ------------------ if not age look for other classes -------------------
     if not age_mod_flag:
-        keyword_prediction = keyword_model.predict(transcript)
-        if keyword_model:
-            result['final_intent'] = keyword_prediction  
+        # ------------- sbert inference --------------------
+        sbert_prediction = sbert_classifier.predict(transcript)
+        result['final_intent'] = sbert_prediction 
     return result 
 
 def return_class_number(class_name):

@@ -1,2 +1,2 @@
-SERVER_ADDRESS: 'http://148.251.195.218:9097/model/parse'
-AGE_RANGE: [40,80]
+SERVER_ADDRESS: 'http://148.251.195.218:9097/model/parse' #NER Server running DONOT CHANGE IT
+AGE_RANGE: [40,80] # age range 
