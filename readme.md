@@ -1,7 +1,7 @@
 # Tool Design to parse sbert response for Dr. Usama's bot
 # set fit is added
 ## How to Use it
-1. Please install requirements
+1. Please install requirementsz
 2. python server.py to run server
 3. python client.py for prediction
 4. if you want to use some other age range just change AGE_RANGE limits

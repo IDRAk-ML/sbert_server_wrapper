@@ -5,7 +5,7 @@ url = "http://0.0.0.0:9096/process-text/"
 
 # Data to be sent to the server
 data = {
-    "text": "i am having fever  "  # Replace this with the actual text you want to send
+    "text": "Do not call mes "  # Replace this with the actual text you want to send
 }
 
 # Sending a POST request to the FastAPI server
