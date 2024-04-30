@@ -6,7 +6,7 @@ classes_dict = {
     'transfer_request':102,
     'calling_about': 103,
     'answering_machine': 3,
-    'DNC' : 5,
+    'DNC' : 5, #
     'say_again': 11,
     'can_you_email' : 105,
     'who_are_you' : 106,
@@ -14,7 +14,7 @@ classes_dict = {
     'DNQ' : 108,
     'GreetBack' : 16,
     'sorry_greeting': 15,
-    'BUSY': 4,
+    'BUSY': 4, #
     'Not_Interested': 8,
     'are_you_bot': 14,
     'where_are_you_calling_from': 7,
@@ -26,4 +26,10 @@ classes_dict = {
     'Insurance': 14,
     'rebuttal': 100,
     'None': 10,
+    'complain_calls':5, # return DNC; customer complaining about calls,
+    'hold_a_sec':4, # like busy
+    'interested':1,
+    'other':10,
+    'transfer_request': 111,
+    'where_get_number':112,
 }

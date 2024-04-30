@@ -12,8 +12,10 @@ class OldBotStyleWrapper:
         result= get_classification(transcript=text,server_address=self.server_address,
                                    age_range=self.age_range)
         class_number = return_class_number(result['final_intent'])
-        return class_number
-
+        return class_number,result['final_intent']
+    
+    def get_class_number(self,text):
+        return return_class_number(text)
 
 if __name__ == '__main__':
     RASA_SERVER_ADDRESS = 'http://113.203.209.145:9097/model/parse'
