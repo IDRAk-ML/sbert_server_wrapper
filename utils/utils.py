@@ -106,3 +106,5 @@ def return_class_number(class_name):
         class_number = classes_dict['None']
     return class_number
 
+def get_class_dict():
+    return classes_dict

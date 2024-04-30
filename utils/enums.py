@@ -1,5 +1,5 @@
 classes_dict = {
-    'affirmation' : 1,
+    'affirmation' : 1, 
     'decline' : 2,
     'weather':101,
     'language_barrier':9,

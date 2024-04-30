@@ -1,4 +1,4 @@
-from utils.utils import get_classification,return_class_number
+from utils.utils import get_classification,return_class_number,get_class_dict
 
 
 
@@ -14,11 +14,13 @@ class OldBotStyleWrapper:
         class_number = return_class_number(result['final_intent'])
         return class_number,result['final_intent']
     
+    def get_class_dict(self):
+        return  get_class_dict()
     def get_class_number(self,text):
         return return_class_number(text)
 
 if __name__ == '__main__':
-    RASA_SERVER_ADDRESS = 'http://113.203.209.145:9097/model/parse'
+    RASA_SERVER_ADDRESS = 'http://148.251.195.218:9097/model/parse'
     AGE_RANGE = (40,80)
     text = 'I am 45'
     old_bot_rasa = OldBotStyleWrapper(rasa_server_address=RASA_SERVER_ADDRESS,
